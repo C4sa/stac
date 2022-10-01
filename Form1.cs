@@ -1,12 +1,19 @@
+using Microsoft.VisualBasic;
+using System.Text;
+using System.Diagnostics;
+
 namespace stac
 {
     public partial class Stac : Form
     {
+        // This list contains the paths to all of the executables to be launched at Windows' startup.
         public List<string> started_progs = new List<string>();
 
         public Stac()
         {
             InitializeComponent();
+            
+            // Code ran at startup
         }
 
         private void openExeBtn_Click(object sender, EventArgs e)
@@ -15,7 +22,7 @@ namespace stac
 
             openExeDlg.Title = "Open .exe file";
             openExeDlg.InitialDirectory = @"c:\";
-            openExeDlg.Filter = "ExeCuties (*.exe)|*.exe|ExeCuties (*.exe)|*.exe";
+            openExeDlg.Filter = "Executables (*.exe)|*.exe";
             openExeDlg.FilterIndex = 2;
             openExeDlg.RestoreDirectory = true;
 
@@ -33,10 +40,79 @@ namespace stac
             }
         }
 
+        private void openProfileBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openProfileDlg = new OpenFileDialog();
+
+            openProfileDlg.Title = "Open .stac profile file";
+            openProfileDlg.InitialDirectory = @"c:\";
+            openProfileDlg.Filter = "Stac profile files (*.stac)|*.stac";
+            openProfileDlg.FilterIndex = 2;
+            openProfileDlg.RestoreDirectory = true;
+
+            if (openProfileDlg.ShowDialog() == DialogResult.OK)
+            {
+                startedProgsList.Items.Clear();
+                started_progs.Clear();
+
+                string f = openProfileDlg.FileNames[0];
+                string[] lines = System.IO.File.ReadAllLines(f);
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split('\t');
+                    ListViewItem item = new ListViewItem(parts[0]);
+                    item.SubItems.Add(parts[1]);
+                    startedProgsList.Items.Add(item);
+
+                    started_progs.Add(openProfileDlg.FileName);
+                }
+            }
+        }
+
         private void removeBtn_Click(object sender, EventArgs e)
         {
             if (startedProgsList.Items.Count > 0)
+            {
                 startedProgsList.Items.Remove(startedProgsList.SelectedItems[0]);
+                started_progs.Remove(startedProgsList.SelectedItems[0].ToString());
+            }
+        }
+
+        private async void expBtn_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Stac Saves|*.stac", ValidateNames = true })
+            {
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using(TextWriter tw = new StreamWriter(new FileStream(saveFileDialog.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                        foreach(ListViewItem item in startedProgsList.Items)
+                        {
+                            await tw.WriteLineAsync(item.SubItems[0].Text + "\t" + item.SubItems[1].Text);
+
+                            started_progs.Add(item.ToString());
+                        }
+
+                        MessageBox.Show("Programs exported successfully.", "Stac", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void runBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < started_progs.Count; i++)
+            {
+                MessageBox.Show("Loop-printed path: " + started_progs[i]);
+            }
+
+            //started_progs.ForEach(p => MessageBox.Show("aaa"));
+        }
+
+        private void LaunchProg(string p)
+        {
+            //Process.Start(path);
+            MessageBox.Show(p);
         }
     }
 }

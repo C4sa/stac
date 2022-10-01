@@ -35,6 +35,9 @@
             this.PathHeader = new System.Windows.Forms.ColumnHeader();
             this.removeBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.expBtn = new System.Windows.Forms.Button();
+            this.openProfileBtn = new System.Windows.Forms.Button();
+            this.runBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openExeBtn
@@ -53,6 +56,7 @@
             this.startedProgsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.NameHeader,
             this.PathHeader});
+            this.startedProgsList.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.startedProgsList.Location = new System.Drawing.Point(12, 55);
             this.startedProgsList.Name = "startedProgsList";
             this.startedProgsList.Size = new System.Drawing.Size(533, 152);
@@ -83,22 +87,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(341, 27);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(432, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(123, 32);
             this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.label1.Text = "Stac 2022";
+            // 
+            // expBtn
+            // 
+            this.expBtn.Location = new System.Drawing.Point(140, 12);
+            this.expBtn.Name = "expBtn";
+            this.expBtn.Size = new System.Drawing.Size(39, 37);
+            this.expBtn.TabIndex = 6;
+            this.expBtn.Text = "Exp";
+            this.expBtn.UseVisualStyleBackColor = true;
+            this.expBtn.Click += new System.EventHandler(this.expBtn_Click);
+            // 
+            // openProfileBtn
+            // 
+            this.openProfileBtn.Location = new System.Drawing.Point(185, 12);
+            this.openProfileBtn.Name = "openProfileBtn";
+            this.openProfileBtn.Size = new System.Drawing.Size(39, 37);
+            this.openProfileBtn.TabIndex = 7;
+            this.openProfileBtn.Text = "Imp";
+            this.openProfileBtn.UseVisualStyleBackColor = true;
+            this.openProfileBtn.Click += new System.EventHandler(this.openProfileBtn_Click);
+            // 
+            // runBtn
+            // 
+            this.runBtn.Location = new System.Drawing.Point(276, 12);
+            this.runBtn.Name = "runBtn";
+            this.runBtn.Size = new System.Drawing.Size(39, 37);
+            this.runBtn.TabIndex = 8;
+            this.runBtn.Text = "Run";
+            this.runBtn.UseVisualStyleBackColor = true;
+            this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
             // Stac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(557, 223);
+            this.Controls.Add(this.runBtn);
+            this.Controls.Add(this.openProfileBtn);
+            this.Controls.Add(this.expBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.removeBtn);
             this.Controls.Add(this.startedProgsList);
             this.Controls.Add(this.openExeBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Stac";
             this.Text = "Stac";
             this.ResumeLayout(false);
@@ -113,5 +155,8 @@
         private ColumnHeader PathHeader;
         private Button removeBtn;
         private Label label1;
+        private Button expBtn;
+        private Button openProfileBtn;
+        private Button runBtn;
     }
 }
