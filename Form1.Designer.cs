@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button helpBtn;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Stac));
             this.openExeBtn = new System.Windows.Forms.Button();
             this.startedProgsList = new System.Windows.Forms.ListView();
@@ -38,6 +39,7 @@
             this.expBtn = new System.Windows.Forms.Button();
             this.openProfileBtn = new System.Windows.Forms.Button();
             this.runBtn = new System.Windows.Forms.Button();
+            helpBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openExeBtn
@@ -87,13 +89,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(432, 19);
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label1.Location = new System.Drawing.Point(447, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 32);
+            this.label1.Size = new System.Drawing.Size(98, 45);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Stac 2022";
+            this.label1.Text = "STAC\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // expBtn
             // 
@@ -125,12 +129,23 @@
             this.runBtn.UseVisualStyleBackColor = true;
             this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
+            // helpBtn
+            // 
+            helpBtn.Location = new System.Drawing.Point(402, 12);
+            helpBtn.Name = "helpBtn";
+            helpBtn.Size = new System.Drawing.Size(39, 37);
+            helpBtn.TabIndex = 9;
+            helpBtn.Text = "Info";
+            helpBtn.UseVisualStyleBackColor = true;
+            helpBtn.Click += new System.EventHandler(this.helpBtn_Click);
+            // 
             // Stac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(557, 223);
+            this.Controls.Add(helpBtn);
             this.Controls.Add(this.runBtn);
             this.Controls.Add(this.openProfileBtn);
             this.Controls.Add(this.expBtn);
@@ -158,5 +173,6 @@
         private Button expBtn;
         private Button openProfileBtn;
         private Button runBtn;
+        private Button helpBtn;
     }
 }

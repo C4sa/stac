@@ -1,0 +1,5 @@
+E:\Buffed Stuff\SoftwareBuilds\Stac\stac.exe
+E:\Buffed Stuff\SoftwareBuilds\Stac\stac.dll
+E:\Buffed Stuff\SoftwareBuilds\Stac\stac.deps.json
+E:\Buffed Stuff\SoftwareBuilds\Stac\stac.runtimeconfig.json
+E:\Buffed Stuff\SoftwareBuilds\Stac\stac.pdb

@@ -64,7 +64,7 @@ namespace stac
                     item.SubItems.Add(parts[1]);
                     startedProgsList.Items.Add(item);
 
-                    started_progs.Add(openProfileDlg.FileName);
+                    started_progs.Add(parts[1]);
                 }
             }
         }
@@ -103,16 +103,13 @@ namespace stac
         {
             for (int i = 0; i < started_progs.Count; i++)
             {
-                MessageBox.Show("Loop-printed path: " + started_progs[i]);
+                Process.Start(started_progs[i]);
             }
-
-            //started_progs.ForEach(p => MessageBox.Show("aaa"));
         }
 
-        private void LaunchProg(string p)
+        private void helpBtn_Click(object sender, EventArgs e)
         {
-            //Process.Start(path);
-            MessageBox.Show(p);
+            MessageBox.Show("Add - Add an executable to the profile.\nRemove - Remove an executable from the profile.\nExport - Export the profile.\nImport - Import a profile.\nRun - Runs all the programs in the list. Good for testing.\nInfo - Shows this dialog.", "Stac Guide", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

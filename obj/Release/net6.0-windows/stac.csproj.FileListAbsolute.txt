@@ -1,0 +1,17 @@
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\bin\Release\net6.0-windows\stac.exe
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\bin\Release\net6.0-windows\stac.deps.json
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\bin\Release\net6.0-windows\stac.runtimeconfig.json
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\bin\Release\net6.0-windows\stac.dll
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\bin\Release\net6.0-windows\stac.pdb
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.csproj.AssemblyReference.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.Stac.resources
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.csproj.GenerateResource.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.AssemblyInfoInputs.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.AssemblyInfo.cs
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.csproj.CoreCompileInputs.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.dll
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\refint\stac.dll
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.pdb
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\stac.genruntimeconfig.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Release\net6.0-windows\ref\stac.dll
