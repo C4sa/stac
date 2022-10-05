@@ -87,7 +87,7 @@ namespace stac
                                 {
                                     string[] parts_ = l.Split('\t');
                                     ListViewItem item = new ListViewItem(parts_[0]);
-                                    item.SubItems.Add(parts[1]);
+                                    item.SubItems.Add(parts_[1]);
                                     startedProgsList.Items.Add(item);
 
                                     string startup_added_item = parts_[1].ToString();
@@ -299,32 +299,6 @@ namespace stac
             {
                 registryKey.DeleteValue("Stac");
             }
-        }
-
-        /* <@@@>
-        public void StartupRegistryManagement()
-        {
-            RegistryKey autorunPath = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
-            if (CheckStartupRegistry() == true)
-            {
-                MessageBox.Show("@@@ registry key exists, reading...");
-            }
-
-            else
-            {
-                MessageBox.Show("@@@ registry key doesn't exist, proceeding to create one...");
-                autorunPath.SetValue("Stac", Application.ExecutablePath + " --startup");
-                MessageBox.Show("@@@ successfully created registry key!");
-            }
-        }
-
-        public static bool CheckStartupRegistry()
-        {
-            RegistryKey autorunStartupKeyPath = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            return (autorunStartupKeyPath.GetValueNames().Contains("Stac"));
-        }
-        </@@@> */
-       
+        }       
     }
 }
