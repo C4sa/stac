@@ -1,7 +1,11 @@
-//using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Win32;
+
+// <@@@> and </@@@> mean the beginning and the end of
+// code parts that are used for debugging/troubleshooting
+// purposes. "@@@" at the beginning of a message also means
+// that it's temporary for testing.
 
 namespace stac
 {
@@ -18,9 +22,17 @@ namespace stac
         {
             InitializeComponent();
 
-            // Autostarting Stac
-            RegisterInStartup(true);
-            
+            // Autostarting Stac          
+            try
+            {
+                RegisterInStartup(true);
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             // Code ran at startup         
             foreach (string arg in Environment.GetCommandLineArgs())
             {
@@ -77,6 +89,10 @@ namespace stac
                                     ListViewItem item = new ListViewItem(parts_[0]);
                                     item.SubItems.Add(parts[1]);
                                     startedProgsList.Items.Add(item);
+
+                                    string startup_added_item = parts_[1].ToString();
+
+                                    started_progs.Add(startup_added_item);
                                 }
                             }
 
@@ -120,7 +136,8 @@ namespace stac
 
                 else
                 {
-                    MessageBox.Show("The profile file couldn't be loaded, so you can't automatically see the list of the programs in your profile. Please make sure you didn't mess with the config files!", "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("The profile file couldn't be loaded, so you can't automatically see the list of the programs in your profile. Please make sure you didn't mess with the config files!", "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }
@@ -184,12 +201,18 @@ namespace stac
 
         private void removeBtn_Click(object sender, EventArgs e)
         {
-            if (startedProgsList.Items.Count > 0)
+            try
             {
-                if(startedProgsList.SelectedItems.Count > 0)
+                if (startedProgsList.SelectedItems.Count > 0)
                     startedProgsList.Items.Remove(startedProgsList.SelectedItems[0]);
                     started_progs.Remove(startedProgsList.SelectedItems[0].ToString());
             }
+            
+            catch(Exception exc)
+            {
+                return;
+            }
+            
         }
 
         private async void expBtn_Click(object sender, EventArgs e)
@@ -203,6 +226,11 @@ namespace stac
                         foreach(ListViewItem item in startedProgsList.Items)
                         {
                             await tw.WriteLineAsync(item.SubItems[0].Text + "\t" + item.SubItems[1].Text);
+
+
+                            string item_added_to_list = item.SubItems[1].ToString();
+                            item_added_to_list = item_added_to_list.Replace("ListViewSubItem: {", "");
+                            item_added_to_list = item_added_to_list.Replace("}", "");
 
                             started_progs.Add(item.ToString());
                         }
@@ -218,7 +246,10 @@ namespace stac
 
         private void runBtn_Click(object sender, EventArgs e)
         {
-            StartProgs();
+            foreach (string prog in started_progs)
+            {
+                Process.Start(prog);
+            }
         }
 
         public void StartProgs()
@@ -241,7 +272,7 @@ namespace stac
                 }
 
                 foreach (string prog in started_progs)
-                {                  
+                {
                     Process.Start(prog);
                 }                             
             }
@@ -269,5 +300,31 @@ namespace stac
                 registryKey.DeleteValue("Stac");
             }
         }
+
+        /* <@@@>
+        public void StartupRegistryManagement()
+        {
+            RegistryKey autorunPath = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (CheckStartupRegistry() == true)
+            {
+                MessageBox.Show("@@@ registry key exists, reading...");
+            }
+
+            else
+            {
+                MessageBox.Show("@@@ registry key doesn't exist, proceeding to create one...");
+                autorunPath.SetValue("Stac", Application.ExecutablePath + " --startup");
+                MessageBox.Show("@@@ successfully created registry key!");
+            }
+        }
+
+        public static bool CheckStartupRegistry()
+        {
+            RegistryKey autorunStartupKeyPath = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            return (autorunStartupKeyPath.GetValueNames().Contains("Stac"));
+        }
+        </@@@> */
+       
     }
 }
