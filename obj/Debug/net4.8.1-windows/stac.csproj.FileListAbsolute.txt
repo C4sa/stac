@@ -1,0 +1,8 @@
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.csproj.AssemblyReference.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.csproj.SuggestedBindingRedirects.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.Form1.resources
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.csproj.GenerateResource.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.AssemblyInfoInputs.cache
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.AssemblyInfo.cs
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net4.8.1-windows\stac.csproj.CoreCompileInputs.cache

@@ -1,8 +1,6 @@
-using Microsoft.VisualBasic;
-using System.Text;
+//using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.Win32;
 
 namespace stac
@@ -45,7 +43,7 @@ namespace stac
        
         public async void SetLatestProfileIni()
         {
-            using (TextWriter tw = new StreamWriter(new FileStream(homePath + "\\Stac\\stac.ini", FileMode.Create), Encoding.UTF8))
+            using (TextWriter tw = new StreamWriter(new FileStream(homePath + "\\Stac\\stac.ini", FileMode.Create), System.Text.Encoding.UTF8))
             {
                 await tw.WriteLineAsync("latestProfile=" + latestProfile);
             }
@@ -68,15 +66,26 @@ namespace stac
                             latestProfile = line;
 
                             // add profile content to listView
-                            string readPath = latestProfile;
-                            readPath = latestProfile.Replace("latestProfile=", "");
-                            string[] lines_ = File.ReadAllLines(readPath);
-                            foreach (string l in lines_)
+                            try
                             {
-                                string[] parts_ = l.Split('\t');
-                                ListViewItem item = new ListViewItem(parts_[0]);
-                                item.SubItems.Add(parts[1]);
-                                startedProgsList.Items.Add(item);
+                                string readPath = latestProfile;
+                                readPath = latestProfile.Replace("latestProfile=", "");
+                                string[] lines_ = File.ReadAllLines(readPath);
+                                foreach (string l in lines_)
+                                {
+                                    string[] parts_ = l.Split('\t');
+                                    ListViewItem item = new ListViewItem(parts_[0]);
+                                    item.SubItems.Add(parts[1]);
+                                    startedProgsList.Items.Add(item);
+                                }
+                            }
+
+                            catch(Exception e)
+                            {
+                                string readPath = latestProfile;
+                                readPath = latestProfile.Replace("latestProfile=", "");
+
+                                MessageBox.Show("Your latest profile wasn't found at path " + readPath, "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -84,7 +93,8 @@ namespace stac
                 
                 else
                 {
-                    MessageBox.Show("The profile file couldn't be loaded, so you can't automatically see the list of the programs in your profile. Please make sure you didn't mess with the config files!", "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("The profile file couldn't be loaded, so you can't automatically see the list of the programs in your profile. Please make sure you didn't mess with the config files!", "Stac", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
 
@@ -188,7 +198,7 @@ namespace stac
             {
                 if(exportProfileDlg.ShowDialog() == DialogResult.OK)
                 {
-                    using(TextWriter tw = new StreamWriter(new FileStream(exportProfileDlg.FileName, FileMode.Create), Encoding.UTF8))
+                    using(TextWriter tw = new StreamWriter(new FileStream(exportProfileDlg.FileName, FileMode.Create), System.Text.Encoding.UTF8))
                     {
                         foreach(ListViewItem item in startedProgsList.Items)
                         {
@@ -249,14 +259,14 @@ namespace stac
 
         public void RegisterInStartup(bool isChecked)
         {
-            RegistryKey? registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             if (isChecked)
             {
-                registryKey?.SetValue("Stac", Application.ExecutablePath + " --startup");
+                registryKey.SetValue("Stac", Application.ExecutablePath + " --startup");
             }
             else
             {
-                registryKey?.DeleteValue("Stac");
+                registryKey.DeleteValue("Stac");
             }
         }
     }

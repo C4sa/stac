@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8630: Invalid 'nullable' value: 'Enable' for C# 7.3. Please use language version '8.0' or greater.
+dotnet_diagnostic.CS8630.severity = warning
