@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -13,6 +14,7 @@ namespace stac
     {
         // This list contains the paths to all of the executables to be launched at Windows' startup.
         public List<string> started_progs = new List<string>();
+        public List<string> runBtn_startingProgs = new List<string>();
         public List<string> args = new List<string>();
 
         string homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile).ToString();
@@ -52,7 +54,7 @@ namespace stac
                 return;
             }
         }
-       
+
         public async void SetLatestProfileIni()
         {
             using (TextWriter tw = new StreamWriter(new FileStream(homePath + "\\Stac\\stac.ini", FileMode.Create), System.Text.Encoding.UTF8))
@@ -247,7 +249,12 @@ namespace stac
         private void runBtn_Click(object sender, EventArgs e)
         {
             foreach (string prog in started_progs)
-            {
+            {                
+                foreach (ListViewItem item_ in startedProgsList.Items)
+                {
+                    runBtn_startingProgs.Add(item_.SubItems[1].Text);
+                }
+
                 Process.Start(prog);
             }
         }
@@ -301,6 +308,16 @@ namespace stac
             {
                 registryKey.DeleteValue("Stac");
             }
-        }       
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void minimizeBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

@@ -15,3 +15,4 @@ C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net6
 C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net6.0-windows\stac.genruntimeconfig.cache
 C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net6.0-windows\ref\stac.dll
 C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net6.0-windows\stac.Stac.resources
+C:\Users\DetectiveBird\Desktop\Workspace\Coding\New Projects\stac\obj\Debug\net6.0-windows\stac.Properties.Resources.resources
