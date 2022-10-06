@@ -1,7 +1,8 @@
 {
   "profiles": {
     "stac": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "--startup"
     }
   }
 }

@@ -265,6 +265,7 @@ namespace stac
 
                 string[] startup_opened_latest_profile_lines = File.ReadAllLines(startup_opened_latest_profile_file);
 
+                started_progs.Clear();
                 foreach (string line in startup_opened_latest_profile_lines)
                 {
                     string[] parts = line.Split('\t');
@@ -273,6 +274,7 @@ namespace stac
 
                 foreach (string prog in started_progs)
                 {
+                    //MessageBox.Show("@@@ [startup] prog in started_progs: " + prog);
                     Process.Start(prog);
                 }                             
             }
